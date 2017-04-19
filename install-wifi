@@ -181,7 +181,7 @@ check_driver() {
 
 		if [ ! -s .uname_string ] ; then
 			if [ ! -f /usr/bin/mkknlimg ] ; then
-				sudo wget -q https://dl.dropboxusercontent.com/u/80256631/mkknlimg -O /usr/bin/mkknlimg
+				sudo wget -q http://www.fars-robotics.net/mkknlimg -O /usr/bin/mkknlimg
 				sudo chmod +x /usr/bin/mkknlimg
 			fi
 			mkknlimg .kernel .kernel1
@@ -216,7 +216,7 @@ check_driver() {
 		echo " for your current kernel."
 	fi
 
-	if (wget --spider -o .wgetlog https://dl.dropboxusercontent.com/u/80256631/$driver\-$kernel\-$build.tar.gz) ; then
+	if (wget --spider -o .wgetlog http://www.fars-robotics.net/$driver\-$kernel\-$build.tar.gz) ; then
 		echo "There is a driver module available for this kernel revision."
 	else
 		if cat .wgetlog | grep -iq "404 Not Found" ; then
@@ -233,7 +233,7 @@ install_driver() {
 
 	echo "Downloading the $driver driver."
 
-	if (wget -q https://dl.dropboxusercontent.com/u/80256631/$driver\-$kernel\-$build.tar.gz -O wifi-driver.tar.gz) ; then
+	if (wget -q http://www.fars-robotics.net/$driver\-$kernel\-$build.tar.gz -O wifi-driver.tar.gz) ; then
 		echo "Installing the $driver driver."
 		echo
 		tar xzf wifi-driver.tar.gz
